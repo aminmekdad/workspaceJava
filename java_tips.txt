@@ -1,0 +1,107 @@
+#import librar1y
+import java.util.Scanner
+in main
+Scanner input= new Scanner(System.in)
+int val=input.nextInt()
+
+Note: A private constructor accessible only if A is defined inside another class or to A's inner ones.
+public clase A{
+//static variable first
+private static final MAX_NUM_CARDS=10;
+private static final SecureRandom sec;
+//instance variable 
+private int n;
+public static enum MBAtype {};
+ A(int n){this.n=n;}
+public static void func(){sysout("A"+n);}
+}
+public class B extends A{private int x;
+ B(int n, int x){super(n);this.x=x;}
+public static void func(){sysout("B"+n);}
+}
+
+//unlike in C++ by default without the attribute virtual is called
+A a=new B(2,3);
+a.funct()// call funct methode overriden in B (not in A as in C++, where funct would have to be declared virtual to produce the same result)
+overide (funtcion same signature as one defined in supeclass)
+overload (function same name but different num of arg)
+
+***ABSTRACT
+public abstract class A(){
+	private int val; // set in A()
+	public abstract void earnings(); // cannot instatiate A
+}
+public class B extends A{.. public void earning(){sysout("B");}}
+//main
+A a = new B() // allowed
+*** INTERFACE =  Abstract class with only static method + abstract instance method
+Exception handling:
+Firt add next to the function signature "throws IllegaleArgumuentException"
+public static void funct throws Exception(){
+if(n<=0) throw IllegaleArgumuentException("Message to be displayed in the exception call stack")
+if(indexArray<0) throw ArrayOutOfBoundException
+try{ n=-1}
+catch(IllegalArgumentEception e){sysout("ER"+e);}
+finaly{//code excuted no matter waht!!
+
+*** String and Char manip
+String s="Hubert"; 
+s.charAt(i) // walk through the String
+// String obj immutable so need tl be converted into a string to modif its original content
+char[] aArr = s.toCharArray();
+Arrays.sort(aArr) // will sort the aArr (Java.util.Arrays.sort(aArr))
+String s2 = new String(aArr)
+s1.equals(s2) (= 0 if equal)
+
+StringBuffer // fast string concat better than s+=w => sb.put(w)
+
+char [] str=s.toCharArray()
+***generic collection (extends Iterable)
+All type of collection ( ArrayList collection for example) are based on(implements) the generic interface Collection<E>
+describe set of operation can be accomplished by any collection
+provides static methods + abstarct methods + defaults instance methods() (only since SE 8)
+From Collection
+ .add(element) : add at the end of the list (keep the same order of insertion
+ .size()
+ .get(index i) //index : int
+ .contains(Object o)
+ .equals(Objects)
+ 
+ .toArray() // inhedrited form "Object" class
+  .remove(Object o) // from "Object"
+List (interface that extends Collection and Iterable)
+ .get(index) //return  
+
+#ArrayList
+List<String> a = new ArrayList<String>() //always use the most generic interface from which your generic collection type is inherited from
+ArrayList // act like a stack (.add(e) = .push() .remove(.size()-1)=pop()) // Note:add(index,e) specify index where to insert e (same as tbl ndx)
+#LinkList
+String[] strArr = {"Hi","You","Me"} //fixed size array
+List<String> l = new LinkList<String>(Arrays.asList(strArr))
+LinkList .get(index) (get e witouht removing it # .add(e)~Que enque or Stk push) .remove()~pop() .removeFirst() dequeue()
+l=LinkIterator<String>()
+for(l.hasNext()) sysout(l.next()) Loop through from first
+for(l.hasPrevious()) sysout(l.previous()) Loop through from last
+
+#Binary Search
+Create a list(ArrayList or LinkedList)
+Collections.sort(list)
+only then you can call binary search
+index=Collection.BinarySearch(list,"Karim") // give positive index if found, negative otherwise
+#Set (interface)
+List with unduplicated elements
+HashSet(class) will use HashSet that implements it
+instead of index, key(element) are hashed and provide an index position->so original order not kept
+#SortedSet(interface) thus we use TreeSet (Class) //reordered at each insertion = more time consuming than HashSet)
+Tree set iterator will walk through the TreeSet in order
+#Map<K,V> (interface)
+provide 3 kinds of views set of keys + collection of values + set of key-value mapping
+implemented by:
+HashTable(thread safe:simultnious access by threads without conflict) and HashMap(not thread safe)
+.put(k,v) .values()->collection of values .get(key)-> value .keySet()->set vue of keys
+
+most used :
+#HashMap: O(1) lookup and insertion,implemented by array of linkedList -> no order
+#LinkedHashMap: O(1) lookup and insertion,implemented by double linkedList buckets -> order of insertion
+#TreeMap: O(log(n)) lookup and insertion,implemented by array of linkedList ->ordered (Key must emplements Comparable) Red-Black Tree sort
+******
